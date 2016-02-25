@@ -236,29 +236,29 @@ public class PDQClientExample {
 		// </livingSubjectId>
 		
 		//Sexo
-		PRPAMT201306UV02LivingSubjectAdministrativeGender livingSubjectGender = new PRPAMT201306UV02LivingSubjectAdministrativeGender();
-		parameterList.getLivingSubjectAdministrativeGender().add(livingSubjectGender);
-		CE sexoParametro = new CE();
-		sexoParametro.setCodeSystem("2.16.840.1.113883.5.1");
-		sexoParametro.setCode("UN");
-		livingSubjectGender.getValue().add(sexoParametro);
-		ST sexoSemanticsText = new ST();
-		sexoSemanticsText.getContent().add("LivingSubject.administrativeGender");
-		livingSubjectGender.setSemanticsText(sexoSemanticsText);
+//		PRPAMT201306UV02LivingSubjectAdministrativeGender livingSubjectGender = new PRPAMT201306UV02LivingSubjectAdministrativeGender();
+//		parameterList.getLivingSubjectAdministrativeGender().add(livingSubjectGender);
+//		CE sexoParametro = new CE();
+//		sexoParametro.setCodeSystem("2.16.840.1.113883.5.1");
+//		sexoParametro.setCode("[SEXO]");
+//		livingSubjectGender.getValue().add(sexoParametro);
+//		ST sexoSemanticsText = new ST();
+//		sexoSemanticsText.getContent().add("LivingSubject.administrativeGender");
+//		livingSubjectGender.setSemanticsText(sexoSemanticsText);
 		
 		//Nome
-//		PDQObjectFactory factory = new PDQObjectFactory();
-//		PRPAMT201306UV02LivingSubjectName livingSubjectNome = new PRPAMT201306UV02LivingSubjectName();
-//		parameterList.getLivingSubjectName().add(livingSubjectNome);
-//		EN nomeParametro = new EN();
-//		nomeParametro.getUse().add("L");
-//		EnGiven given = new EnGiven();
-//		given.getContent().add("SEVERINO FAUSTINO");
-//		nomeParametro.getContent().add(factory.createENGiven(given));
-//		livingSubjectNome.getValue().add(nomeParametro);
-//		ST nomeSemanticsText = new ST();
-//		nomeSemanticsText.getContent().add("LivingSubject.Given");
-//		livingSubjectNome.setSemanticsText(nomeSemanticsText);
+		PDQObjectFactory factory = new PDQObjectFactory();
+		PRPAMT201306UV02LivingSubjectName livingSubjectNome = new PRPAMT201306UV02LivingSubjectName();
+		parameterList.getLivingSubjectName().add(livingSubjectNome);
+		EN nomeParametro = new EN();
+		nomeParametro.getUse().add("L");
+		EnGiven given = new EnGiven();
+		given.getContent().add("[NOME COMPLETO]");
+		nomeParametro.getContent().add(factory.createENGiven(given));
+		livingSubjectNome.getValue().add(nomeParametro);
+		ST nomeSemanticsText = new ST();
+		nomeSemanticsText.getContent().add("LivingSubject.Given");
+		livingSubjectNome.setSemanticsText(nomeSemanticsText);
 		
 		//CPF
 //		PRPAMT201306UV02LivingSubjectId livingSubjectIdCPF = new PRPAMT201306UV02LivingSubjectId();
@@ -345,12 +345,5 @@ public class PDQClientExample {
 		
 		//Data de nascimento
 		System.out.println("Data de nascimento: " + patientPerson.getBirthTime().getValue());
-		
-		
-		
-		System.out.println(patientPerson.getAddr().get(0).getUse());
-//		JAXBElement<EnGiven> objEndereco = (JAXBElement<EnGiven>) patientPerson.getAddr().get(0).getContent().get(0);
-//		
-//		System.out.println("TESTE ENDEREÇO: " + objEndereco.getValue().getContent().get(0));
 	}
 }
