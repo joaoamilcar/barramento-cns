@@ -1,0 +1,32 @@
+Tutorial - Criação de Client Java para consumo dos Serviços PIX-PDQ do Cadsus
+
+-- Esse tutorial visa exemplificar a criação de um Client para consumir os Web Services PIX-PDQ do Datasus
+
+1 - Cole a pasta META-INF no src do seu projeto
+2 - Cole o arquivo jaxb.xml no src do seu projeto
+
+3 - Execute de um terminal a partir da pasta src do seu projeto
+wsimport -b jaxb.xml -s . -extension -wsdllocation "http://localhost/wsdl/PDQSupplier.wsdl" -Xnocompile -keep META-INF/wsdl/PDQSupplier.wsdl
+
+4 - Após fazer o wsimport do PDQ, renomear a classe ObjectFactory gerada para PDQObjectFactory.
+
+5 - Execute de um terminal a partir da pasta src do seu projeto
+wsimport -b jaxb.xml -s . -extension -wsdllocation "http://localhost/wsdl/PIXManager.wsdl" -Xnocompile -keep META-INF/wsdl/PIXManager.wsdl
+
+6 - Após fazer o wsimport do PIX, renomear a classe ObjectFactory gerada para PIXObjectFactory.
+
+Troubleshoot-------------------------------------
+
+Access restriction:
+Botao direito no projeto->properties->java build path->libraries->expandir java->access rules->edit...->add...->acessible + com/sun/xml/internal/**
+
+-------------------------------------------------
+
+Para consumir o serviço utilize as classes presentes na pasta java do pacote do tutorial.
+As classes PDQClientExample e PIXClientExample são apenas um exemplo de consumo dos serviços, 
+enquanto que a classe WSSUsernameTokenSecurityHandler serve de suporte para criar um cabeçalho de segurança válido.
+
+Você pode utilizar o código presente nelas de acordo com o seu sistema.
+
+Várias linhas dos códigos Java estão comentadas pois são exemplos customizáveis de PIX-PDQ.
+A inclusão PIX contém todos os campos de um usuário.
